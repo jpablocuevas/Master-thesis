@@ -42,13 +42,13 @@ double gauss_exp (double t){
 	return exp (-pow(t,2));
 }
 
-double erfc (double z){
+double my_erfc (double z){
 	
 	double (*f) (double);
 	
 	f = &gauss_exp;
 	
-	return (2./sqrt(pi))*integral (*f, 0, z, 3500);
+	return (1.-2./sqrt(pi)*integral (*f, 0, z, 5500));
 }
 
 
@@ -56,7 +56,7 @@ double erfc (double z){
 
 int main (void){
 
-	printf ("erfc (1) = %lf \n", erfc(1.));
+	printf ("erfc (1) = %lf \n", my_erfc(1.));
 
 	
 
